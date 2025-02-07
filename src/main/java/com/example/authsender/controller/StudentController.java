@@ -1,5 +1,6 @@
-package com.example.authsender;
+package com.example.authsender.controller;
 
+import com.example.authsender.model.Student;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;

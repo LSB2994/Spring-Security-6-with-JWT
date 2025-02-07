@@ -1,4 +1,4 @@
-package com.example.authsender;
+package com.example.authsender.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;

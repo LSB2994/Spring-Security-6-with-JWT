@@ -1,4 +1,4 @@
-package com.example.authsender;
+package com.example.authsender.model;
 
 public class Student {
     private int id;
