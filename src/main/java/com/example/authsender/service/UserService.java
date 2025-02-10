@@ -2,6 +2,7 @@ package com.example.authsender.service;
 
 import com.example.authsender.model.Users;
 import com.example.authsender.repo.UserRepo;
+import com.example.authsender.config.JWTService.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +19,9 @@ public class UserService {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    private JWTService jwtService;
+
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
 
     public Users register(Users user) {
@@ -29,11 +33,11 @@ public class UserService {
     public String verify(Users users) {
         Authentication authenticate = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(
-                        users.getUserName(),
+                        users.getUsername(),
                         users.getPassword())
                 );
         if (authenticate.isAuthenticated()) {
-            return users.getUserName();
+            return jwtService.generateToken(users.getUsername());
         }
         return "false";
     }
